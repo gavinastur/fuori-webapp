@@ -1,4 +1,4 @@
-name: Fuori deploy on merge
+name: Fuori main
 on:
   push:
     branches:
