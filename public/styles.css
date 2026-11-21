@@ -1,4 +1,4 @@
-/* Fuori: the page is a dictionary entry. The headword is set so large it runs outside the page. */
+/* Fuori: the page is a dictionary entry. The headword hangs in the margin, outside the indented entry. */
 
 :root {
   color-scheme: light dark;
@@ -9,6 +9,7 @@
   --accent: #263238;
   --on-accent: #ffffff;
   --gutter: clamp(1.25rem, 6vw, 5rem);
+  --indent: clamp(1.5rem, 9vw, 8rem);
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
@@ -65,34 +66,38 @@ body {
 
 /* Entry */
 
+/* The headword starts at the page margin; everything after it is indented, so the word hangs outside the entry. */
 .entry {
+  display: flex;
   flex: 1;
-  padding: clamp(2rem, 8vh, 6rem) 0 3rem var(--gutter);
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 6vh, 4rem) var(--gutter) clamp(3rem, 8vh, 5rem);
 }
 
-/* Right-anchored and pushed 0.2em past the edge, so the last letter is always cut by the page edge,
-   whatever font the device substitutes. */
+.entry > :not(.entry__word) {
+  margin-left: var(--indent);
+}
+
 .entry__word {
-  width: max-content;
-  margin: 0 -0.2em 0 auto;
-  font-size: clamp(6rem, 30vw, 34rem);
+  margin: 0 0 0 -0.05em;
+  font-size: clamp(4.5rem, 14vw, 12rem);
   font-weight: 900;
-  letter-spacing: -0.065em;
-  line-height: 0.78;
-  white-space: nowrap;
-  animation: arrive 1.2s cubic-bezier(0.16, 0.84, 0.24, 1) both;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  animation: arrive 1s cubic-bezier(0.16, 0.84, 0.24, 1) both;
 }
 
 .entry--phrase .entry__word {
-  font-size: clamp(3.5rem, 14vw, 16rem);
+  font-size: clamp(3.5rem, 11vw, 9rem);
 }
 
 .entry__meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.25rem;
-  margin: 1.25rem 0 0;
-  padding-right: var(--gutter);
+  margin-top: 1.5rem;
+  margin-bottom: 0;
   font-family: var(--font-mono);
   font-size: clamp(1rem, 2.2vw, 1.375rem);
 }
@@ -104,8 +109,9 @@ body {
 
 .entry__senses {
   max-width: 38rem;
-  margin: 2.5rem 0 0;
-  padding: 0 var(--gutter) 0 0;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  padding: 0;
   list-style: none;
   counter-reset: sense;
   animation: settle 0.6s ease-out 0.5s both;
@@ -132,7 +138,7 @@ body {
 }
 
 .entry__action {
-  display: inline-block;
+  align-self: flex-start;
   margin-top: 1.5rem;
   padding: 0.875rem 1.5rem;
   background: var(--accent);
@@ -165,11 +171,11 @@ a:focus-visible {
   color: var(--muted);
 }
 
-/* Motion: the headword arrives from outside the page and settles */
+/* Motion: the headword arrives from outside the page, on the left, and settles in the margin */
 
 @keyframes arrive {
   from {
-    transform: translateX(28vw);
+    transform: translateX(-0.4em);
   }
   to {
     transform: none;
