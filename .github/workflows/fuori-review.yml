@@ -38,6 +38,8 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FUORIAPP }}
           projectId: fuoriapp
+          # Previews expire 1 hour after the last push to the PR (the action's default is 7 days; 1h is the minimum).
+          expires: 1h
       - name: Lighthouse
         uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # v12
         with:
