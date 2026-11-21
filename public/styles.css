@@ -9,7 +9,9 @@
   --accent: #263238;
   --on-accent: #ffffff;
   --gutter: clamp(1.25rem, 6vw, 5rem);
-  --indent: clamp(1.5rem, 9vw, 8rem);
+  --word-size: clamp(4.5rem, 14vw, 12rem);
+  /* Indent the entry to where the "u" starts, so the text column lines up with the headword. */
+  --indent: calc(var(--word-size) * 0.4);
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
@@ -71,8 +73,7 @@ body {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
-  padding: clamp(2rem, 6vh, 4rem) var(--gutter) clamp(3rem, 8vh, 5rem);
+  padding: clamp(2.5rem, 10vh, 6rem) var(--gutter) clamp(3rem, 8vh, 5rem);
 }
 
 .entry > :not(.entry__word) {
@@ -81,15 +82,15 @@ body {
 
 .entry__word {
   margin: 0 0 0 -0.05em;
-  font-size: clamp(4.5rem, 14vw, 12rem);
+  font-size: var(--word-size);
   font-weight: 900;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.05em;
   line-height: 0.9;
   animation: arrive 1s cubic-bezier(0.16, 0.84, 0.24, 1) both;
 }
 
-.entry--phrase .entry__word {
-  font-size: clamp(3.5rem, 11vw, 9rem);
+.entry--phrase {
+  --word-size: clamp(3.5rem, 11vw, 9rem);
 }
 
 .entry__meta {
