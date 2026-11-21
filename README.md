@@ -33,12 +33,12 @@ Then `npm ci`.
 
 ## CI/CD
 
-| Workflow                               | When                          | What                                                                                                       |
-| -------------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `PR checks` (`fuori-review.yml`)       | Every PR                      | Biome lint. For branches in this repo: deploys a Firebase preview channel, then runs Lighthouse against it |
-| `PR lint` (`pr-lint.yml`)              | PR opened, edited or reopened | Checks the PR title follows [Conventional Commits](https://www.conventionalcommits.org/)                   |
-| `Fuori main` (`fuori-main.yml`)        | Push to `main`                | Deploys live, then smoke tests `https://fuoriapp.web.app`                                                  |
-| `Daily site check` (`fuori-daily.yml`) | 06:17 UTC daily, or manually  | Smoke tests `https://www.fuori.co.uk` to catch domain, DNS and certificate problems                        |
+| Workflow                               | When                                                | What                                                                                                       |
+| -------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `PR checks` (`fuori-review.yml`)       | Every PR                                            | Biome lint. For branches in this repo: deploys a Firebase preview channel, then runs Lighthouse against it |
+| `PR lint` (`pr-lint.yml`)              | PR opened, edited or reopened                       | Checks the PR title follows [Conventional Commits](https://www.conventionalcommits.org/)                   |
+| `Fuori main` (`fuori-main.yml`)        | Push to `main` that changes site files, or manually | Deploys live, then smoke tests `https://fuoriapp.web.app`                                                  |
+| `Daily site check` (`fuori-daily.yml`) | 06:17 UTC daily, or manually                        | Smoke tests `https://www.fuori.co.uk` to catch domain, DNS and certificate problems                        |
 
 Lighthouse fails the PR if performance, best practices or SEO score below 0.9, or accessibility below 0.95. The `is-crawlable` and
 `canonical` audits are skipped because preview channels are `noindex` and the canonical URL points at `www.fuori.co.uk`.

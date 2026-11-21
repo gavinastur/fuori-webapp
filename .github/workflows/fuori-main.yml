@@ -3,6 +3,14 @@ on:
   push:
     branches:
       - main
+    # Only deploy when something that affects the live site changes.
+    paths:
+      - "public/**"
+      - "firebase.json"
+      - ".firebaserc"
+      - "scripts/smoke-test.sh"
+      - ".github/workflows/fuori-main.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
