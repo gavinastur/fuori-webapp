@@ -55,5 +55,6 @@ PRs are squash-merged, so the PR title becomes the commit message on `main`. Ren
 - **Caching.** CSS is cached for an hour, SVG and PNG for a day, and file names aren't fingerprinted, so visitors may see an old version
   for up to that long after a deploy.
 - **Canonical URL.** `index.html`, `sitemap.xml`, `robots.txt` and the social image all use `https://www.fuori.co.uk/`.
-- **Colours.** The accent colour is charcoal `#263238` (`#b0bec5` in dark mode), set as CSS custom properties in `styles.css`. All text
-  colours pass WCAG AA in light and dark mode. Check contrast if you change them.
+- **Design.** Both pages are styled as dictionary entries: the headword hangs in the margin and the rest of the entry is indented to
+  line up with its "u". Colours are CSS custom properties at the top of `styles.css`: charcoal `#263238` ink on `#eceff1` in light mode,
+  `#eceff1` on `#101619` in dark mode. All text colours pass WCAG AA in both. Check contrast if you change them.
