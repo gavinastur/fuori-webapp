@@ -4,7 +4,7 @@
   --card-bg: #ffffff;
   --text: rgba(0, 0, 0, 0.87);
   --text-muted: rgba(0, 0, 0, 0.64);
-  --link-bg: #0277bd;
+  --link-bg: #263238;
   --link-text: #ffffff;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
@@ -15,7 +15,7 @@
     --card-bg: #1e1e1e;
     --text: rgba(255, 255, 255, 0.87);
     --text-muted: rgba(255, 255, 255, 0.7);
-    --link-bg: #4fc3f7;
+    --link-bg: #b0bec5;
     --link-text: #000000;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8);
   }
