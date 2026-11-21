@@ -4,13 +4,13 @@ The [Fuori Limited](https://www.fuori.co.uk/) website: a single static page serv
 
 ## Layout
 
-| Path | What |
-| --- | --- |
-| `public/` | Everything that gets deployed: `index.html`, `404.html`, `styles.css`, favicon, social image, `robots.txt`, `sitemap.xml` |
-| `assets/og-image.svg` | Source for `public/og-image.png` (the social preview image) |
-| `firebase.json` | Hosting config: security and cache headers, emulator port |
-| `scripts/smoke-test.sh` | Checks status codes and headers against a URL |
-| `lighthouserc.json` | Lighthouse CI score thresholds |
+| Path                    | What                                                                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `public/`               | Everything that gets deployed: `index.html`, `404.html`, `styles.css`, favicon, social image, `robots.txt`, `sitemap.xml` |
+| `assets/og-image.svg`   | Source for `public/og-image.png` (the social preview image)                                                               |
+| `firebase.json`         | Hosting config: security and cache headers, emulator port                                                                 |
+| `scripts/smoke-test.sh` | Checks status codes and headers against a URL                                                                             |
+| `lighthouserc.json`     | Lighthouse CI score thresholds                                                                                            |
 
 There is no build step. Files in `public/` are served as-is.
 
@@ -24,21 +24,21 @@ Then `npm ci`.
 
 ## Scripts
 
-| Command | What it does |
-| --- | --- |
-| `npm start` | Serves the site with the Firebase Hosting emulator at http://localhost:5050, applying the headers and 404 handling from `firebase.json` |
-| `npm run smoke` | Runs the smoke test against the emulator (start it first) |
-| `npm run lint` | Biome check with fixes. `npm run lint:ci` checks without fixing |
-| `npm run og-image` | Regenerates `public/og-image.png` from `assets/og-image.svg` |
+| Command            | What it does                                                                                                                            |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm start`        | Serves the site with the Firebase Hosting emulator at http://localhost:5050, applying the headers and 404 handling from `firebase.json` |
+| `npm run smoke`    | Runs the smoke test against the emulator (start it first)                                                                               |
+| `npm run lint`     | Biome check with fixes. `npm run lint:ci` checks without fixing                                                                         |
+| `npm run og-image` | Regenerates `public/og-image.png` from `assets/og-image.svg`                                                                            |
 
 ## CI/CD
 
-| Workflow | When | What |
-| --- | --- | --- |
-| `PR checks` (`fuori-review.yml`) | Every PR | Biome lint. For branches in this repo: deploys a Firebase preview channel, then runs Lighthouse against it |
-| `PR lint` (`pr-lint.yml`) | PR opened, edited or reopened | Checks the PR title follows [Conventional Commits](https://www.conventionalcommits.org/) |
-| `Fuori main` (`fuori-main.yml`) | Push to `main` | Deploys live, then smoke tests `https://fuoriapp.web.app` |
-| `Daily site check` (`fuori-daily.yml`) | 06:17 UTC daily, or manually | Smoke tests `https://www.fuori.co.uk` to catch domain, DNS and certificate problems |
+| Workflow                               | When                          | What                                                                                                       |
+| -------------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `PR checks` (`fuori-review.yml`)       | Every PR                      | Biome lint. For branches in this repo: deploys a Firebase preview channel, then runs Lighthouse against it |
+| `PR lint` (`pr-lint.yml`)              | PR opened, edited or reopened | Checks the PR title follows [Conventional Commits](https://www.conventionalcommits.org/)                   |
+| `Fuori main` (`fuori-main.yml`)        | Push to `main`                | Deploys live, then smoke tests `https://fuoriapp.web.app`                                                  |
+| `Daily site check` (`fuori-daily.yml`) | 06:17 UTC daily, or manually  | Smoke tests `https://www.fuori.co.uk` to catch domain, DNS and certificate problems                        |
 
 Lighthouse fails the PR if performance, best practices or SEO score below 0.9, or accessibility below 0.95. The `is-crawlable` and
 `canonical` audits are skipped because preview channels are `noindex` and the canonical URL points at `www.fuori.co.uk`.
