@@ -8,6 +8,7 @@
     "@biomejs/biome": "2.6.6"
   },
   "scripts": {
+    "start": "firebase emulators:start --only hosting",
     "lint": "npm run biome:check:fix",
     "lint:ci": "npm run biome:check",
     "biome:check": "biome check .",
