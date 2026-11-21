@@ -10,8 +10,8 @@ failures=0
 pass() { echo "ok   $1"; }
 fail() { echo "FAIL $1"; failures=$((failures + 1)); }
 
-status() { curl -sS -o /dev/null -w '%{http_code}' --retry 3 --retry-all-errors "$1"; }
-headers() { curl -sS -D - -o /dev/null --retry 3 --retry-all-errors "$1"; }
+status() { curl -sSL -o /dev/null -w '%{http_code}' --retry 3 --retry-all-errors "$1"; }
+headers() { curl -sSL -D - -o /dev/null --retry 3 --retry-all-errors "$1"; }
 
 check_status() {
   local path="$1" want="$2" got
