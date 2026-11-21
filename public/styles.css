@@ -95,20 +95,18 @@ body {
 }
 
 .entry__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
   margin-top: 1.5rem;
   margin-bottom: 0;
   font-family: var(--font-mono);
-  font-size: clamp(1rem, 2.2vw, 1.375rem);
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
 }
 
 .entry__pos {
-  font-style: italic;
+  margin-right: 0.25rem;
   color: var(--muted);
 }
 
+/* Senses: numbers share one size and sit on the first line's baseline. A single sense is not numbered, as in a real dictionary. */
 .entry__senses {
   max-width: 38rem;
   margin-top: 2rem;
@@ -116,27 +114,65 @@ body {
   padding: 0;
   list-style: none;
   counter-reset: sense;
+  font-size: 1.125rem;
   animation: settle 0.6s ease-out 0.5s both;
 }
 
 .entry__senses li {
-  position: relative;
-  padding: 1rem 0 1rem 2.75rem;
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  align-items: baseline;
+  padding: 0.875rem 0;
   border-top: 1px solid var(--rule);
   counter-increment: sense;
 }
 
 .entry__senses li::before {
   content: counter(sense);
-  position: absolute;
-  top: 1rem;
-  left: 0;
   font-family: var(--font-mono);
+  font-size: 1rem;
   font-weight: 700;
 }
 
-.entry__senses li:first-child {
-  font-size: 1.25rem;
+.entry__senses li:only-child {
+  display: block;
+}
+
+.entry__senses li:only-child::before {
+  content: none;
+}
+
+.entry__example {
+  display: block;
+  margin-top: 0.25rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.entry__origin {
+  max-width: 38rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9375rem;
+  animation: settle 0.6s ease-out 0.6s both;
+}
+
+.entry__label {
+  margin-right: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.entry__about {
+  max-width: 38rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+  animation: settle 0.6s ease-out 0.7s both;
 }
 
 .entry__action {
@@ -198,6 +234,8 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .entry__word,
   .entry__senses,
+  .entry__origin,
+  .entry__about,
   .entry__action {
     animation: none;
   }
