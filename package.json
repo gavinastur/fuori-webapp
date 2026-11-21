@@ -13,7 +13,9 @@
     "lint:ci": "npm run biome:check",
     "biome:check": "biome check .",
     "biome:check:fix": "biome check --write .",
-    "pretty": "biome format --write ."
+    "pretty": "biome format --write .",
+    "og-image": "rsvg-convert -w 1200 -h 630 assets/og-image.svg -o public/og-image.png",
+    "smoke": "scripts/smoke-test.sh http://localhost:5050"
   },
   "engines": {
     "node": "^26.0.0",
