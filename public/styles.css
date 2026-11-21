@@ -83,7 +83,7 @@ body {
   margin: 0 0 0 -0.05em;
   font-size: clamp(4.5rem, 14vw, 12rem);
   font-weight: 900;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.015em;
   line-height: 0.9;
   animation: arrive 1s cubic-bezier(0.16, 0.84, 0.24, 1) both;
 }
