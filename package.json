@@ -5,24 +5,14 @@
   "author": "Gavin Astur",
   "type": "module",
   "devDependencies": {
-    "@biomejs/biome": "2.6.6",
-    "@tsconfig/node26": "26.0.0",
-    "@vitest/coverage-v8": "5.1.0",
-    "@vitest/ui": "5.1.0",
-    "typescript": "7.0.2",
-    "vitest": "5.1.0"
+    "@biomejs/biome": "2.6.6"
   },
   "scripts": {
-    "build": "npm run tsc",
     "lint": "npm run biome:check:fix",
     "lint:ci": "npm run biome:check",
     "biome:check": "biome check .",
     "biome:check:fix": "biome check --write .",
-    "pretty": "biome format --write .",
-    "prettier:ci": "npm run pretty",
-    "test": "vitest run --coverage",
-    "test:ci": "vitest run --silent --coverage",
-    "tsc": "tsc"
+    "pretty": "biome format --write ."
   },
   "engines": {
     "node": "^26.0.0",
