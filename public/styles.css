@@ -84,7 +84,8 @@ body {
   margin: 0 0 0 -0.05em;
   font-size: var(--word-size);
   font-weight: 900;
-  letter-spacing: -0.05em;
+  /* The system display font is already tight at this weight; any tighter and the letters touch. */
+  letter-spacing: -0.015em;
   line-height: 0.9;
   animation: arrive 1s cubic-bezier(0.16, 0.84, 0.24, 1) both;
 }
