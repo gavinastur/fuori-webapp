@@ -25,6 +25,7 @@ check_header() {
 }
 
 check_status / 200
+check_status /privacy 200
 check_status /robots.txt 200
 check_status /sitemap.xml 200
 check_status /favicon.svg 200

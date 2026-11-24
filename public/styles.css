@@ -188,14 +188,47 @@ body {
 }
 
 .entry__xref a {
-  color: var(--ink);
   font-weight: 700;
+}
+
+/* Notice: plain prose sections on the privacy page, headed like the entry's small labels. */
+.notice {
+  max-width: 38rem;
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--rule);
+  animation: settle 0.6s ease-out 0.6s both;
+}
+
+.notice__heading {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.notice p {
+  margin: 0 0 0.75rem;
+}
+
+.notice p:last-child {
+  margin-bottom: 0;
+}
+
+.entry__xref a,
+.notice a,
+.colophon a {
+  color: var(--ink);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
 
-.entry__xref a:hover {
+.entry__xref a:hover,
+.notice a:hover,
+.colophon a:hover {
   text-decoration-thickness: 2px;
 }
 
@@ -245,7 +278,8 @@ a:focus-visible {
   .entry__phrases,
   .entry__origin,
   .entry__about,
-  .entry__xref {
+  .entry__xref,
+  .notice {
     animation: none;
   }
 }

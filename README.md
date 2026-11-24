@@ -1,16 +1,16 @@
 # fuori-webapp
 
-The [Fuori Limited](https://www.fuori.co.uk/) website: a single static page served by Firebase Hosting (project `fuoriapp`).
+The [Fuori Limited](https://www.fuori.co.uk/) website: a small static site served by Firebase Hosting (project `fuoriapp`).
 
 ## Layout
 
-| Path                    | What                                                                                                                      |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `public/`               | Everything that gets deployed: `index.html`, `404.html`, `styles.css`, favicon, social image, `robots.txt`, `sitemap.xml` |
-| `assets/og-image.svg`   | Source for `public/og-image.png` (the social preview image)                                                               |
-| `firebase.json`         | Hosting config: security and cache headers, emulator port                                                                 |
-| `scripts/smoke-test.sh` | Checks status codes and headers against a URL                                                                             |
-| `lighthouserc.json`     | Lighthouse CI score thresholds                                                                                            |
+| Path                    | What                                                                                                                                      |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `public/`               | Everything that gets deployed: `index.html`, `privacy.html`, `404.html`, `styles.css`, favicon, social image, `robots.txt`, `sitemap.xml` |
+| `assets/og-image.svg`   | Source for `public/og-image.png` (the social preview image)                                                                               |
+| `firebase.json`         | Hosting config: security and cache headers, emulator port                                                                                 |
+| `scripts/smoke-test.sh` | Checks status codes and headers against a URL                                                                                             |
+| `lighthouserc.json`     | Lighthouse CI score thresholds                                                                                                            |
 
 There is no build step. Files in `public/` are served as-is.
 
@@ -54,7 +54,11 @@ PRs are squash-merged, so the PR title becomes the commit message on `main`. Ren
   in `public/`, update the script to match, or the deploy check will fail.
 - **Caching.** CSS is cached for an hour, SVG and PNG for a day, and file names aren't fingerprinted, so visitors may see an old version
   for up to that long after a deploy.
-- **Canonical URL.** `index.html`, `sitemap.xml`, `robots.txt` and the social image all use `https://www.fuori.co.uk/`.
-- **Design.** Both pages are styled as dictionary entries: the headword hangs in the margin and the rest of the entry is indented to
+- **Canonical URL.** `index.html`, `privacy.html`, `sitemap.xml`, `robots.txt` and the social image all use `https://www.fuori.co.uk/`.
+- **Clean URLs.** `firebase.json` sets `cleanUrls`, so `privacy.html` is served at `/privacy`. Link to pages without the `.html`.
+- **Privacy notice.** `privacy.html` says the site sets no cookies and loads nothing from other sites. If you add analytics, embeds,
+  forms or anything else that collects data, update the notice (and its "Updated" date), and add a cookie banner if it sets
+  non-essential cookies.
+- **Design.** All pages are styled as dictionary entries: the headword hangs in the margin and the rest of the entry is indented to
   line up with its "u". Colours are CSS custom properties at the top of `styles.css`: charcoal `#263238` ink on `#eceff1` in light mode,
   `#eceff1` on `#101619` in dark mode. All text colours pass WCAG AA in both. Check contrast if you change them.
